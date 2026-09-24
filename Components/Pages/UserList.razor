@@ -1,0 +1,45 @@
+﻿@page "/users"
+
+@using System.Linq
+@using FullStackDevWeek2.Models
+
+@using FullStackDevWeek2.Services
+@inject UserService UserService
+
+
+
+<h3>User List</h3>
+
+@if (users == null)
+{
+    <p>Loading...</p>
+}
+else
+{
+    @foreach (var user in users)
+    {
+        <p>
+            <a href="/userdetail/@user.Id">
+                @user.Name
+            </a>
+
+            @* <UserDetail Id=@user.Id /> *@
+
+        </p>
+
+        
+    }
+}
+
+@code {
+    private List<FullStackDevWeek2.Models.User>? users;
+
+
+    protected override async Task OnInitializedAsync()
+    {
+
+        users = (await UserService.GetUsersAsync()).ToList();
+    }
+
+    // Using the shared FullStackDevWeek2.Models.User model
+}

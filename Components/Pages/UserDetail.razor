@@ -1,0 +1,47 @@
+﻿@page "/userdetail/{Id:int}"
+
+@using Models;
+@using Services;
+@inject UserService UserService;
+
+
+
+
+@if (user == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <div class="card m-3" style="min-width:18rem; max-width:30.5 %">
+        <div class="card-header ">
+            <h3>@user.Name</h3>
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">@user.Email</h5>
+            <p class="card-text">Phone: @user.Phone</p>
+        </div>
+    </div>
+}
+
+
+@code {
+
+    [Parameter]
+    public int Id { get; set; }
+
+    private Models.User? user ;
+
+
+    protected override async Task OnInitializedAsync()
+    {
+
+        user = await UserService.GetUserByIdAsync(Id);
+    }
+
+
+
+
+
+
+}
