@@ -8,18 +8,8 @@ builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
 
 
-builder.Services.AddHttpClient<IEmployeeService, EmployeeService>(client =>
-{
-    client.BaseAddress = new Uri("https://localhost:5001");
-});
-
-//builder.Services.AddHttpClient<IUserService, UserService>();
-
 builder.Services.AddHttpClient();
-builder.Services.AddScoped<UserService>();
-
-
-
+builder.Services.AddScoped<ProductService>();
 
 var app = builder.Build();
 
