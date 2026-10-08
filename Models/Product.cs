@@ -4,9 +4,9 @@
     {
         public int Id { get; set; }
         public string ProductCode { get; set; } = string.Empty;
-        public string name { get; set; } = string.Empty;
-        public string description { get; set; } = string.Empty;
-        public decimal price { get; set; }
+        public string Name { get; set; } = string.Empty;
+        public string Description { get; set; } = string.Empty;
+        public decimal Price { get; set; }
         public int QuantityInStock { get; set; }
         public string Category { get; set; } = string.Empty;
         public string Barcode { get; set; } = string.Empty;
